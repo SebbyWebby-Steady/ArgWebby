@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Circus Access</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ffec99, #ffd166, #ffb3c1);
+        animation: bgshift 10s infinite alternate ease-in-out;
+        font-family: 'Courier New', monospace;
+        color: #000;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+    }
+
+    @keyframes bgshift {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(30deg); }
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #fff;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    input {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 1.2rem;
+        border: 3px solid #ff477e;
+        border-radius: 10px;
+        background: #fff5;
+        backdrop-filter: blur(5px);
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 10px;
+        background: #ff477e;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 10px #ff477e;
+    }
+
+    /* VHS + glitch texts */
+    .glitch-message {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        font-weight: bold;
+        color: red;
+        opacity: 0;
+        text-shadow: 0 0 10px red;
+        pointer-events: none;
+        animation: glitchFlash 8s infinite;
+    }
+
+    @keyframes glitchFlash {
+        0%, 92%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        93% { opacity: 1; transform: translate(-48%, -52%) scale(1.1); }
+        94% { opacity: 0; }
+        95% { opacity: 1; transform: translate(-52%, -48%) scale(1.05); }
+        96% { opacity: 0; }
+    }
+
+    .vhs-lines::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+        pointer-events: none;
+        animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+</style>
+</head>
+<body class="vhs-lines">
+
+<h1>🎪 Welcome to the Circus 🎪</h1>
+<p>Enter the magic word to step inside...</p>
+
+<input type="password" id="password" placeholder="Enter password" />
+<button onclick="checkPassword()">Let me in!</button>
+
+<!-- Glitch messages -->
+<div class="glitch-message" style="animation-delay: 0s;">it records</div>
+<div class="glitch-message" style="animation-delay: 3s;">it obserbs</div>
+
+<script>
+function checkPassword() {
+    const input = document.getElementById("password").value;
+    if (input === "yippee") {
+        window.location.href = "https://sites.google.com/view/sebby-secret-silly-space/insiderportal/thecircy";
+    } else {
+        alert("Wrong password, silly clown!");
+    }
+}
+</script>
+
+</body>
+</html>
